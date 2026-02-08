@@ -3,8 +3,11 @@ node_modules
 .worktrees
 .sst
 .env
+.env.local
+.env.*.local
 .idea
 .vscode
+!.vscode/*.example.json
 .codex
 *~
 playground

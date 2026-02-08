@@ -111,6 +111,26 @@ Learn more about [agents](https://opencode.ai/docs/agents).
 
 For more info on how to configure OpenCode, [**head over to our docs**](https://opencode.ai/docs).
 
+### Enterprise Setup
+
+This repository is configured for enterprise-grade development with comprehensive documentation and best practices.
+
+📚 **Documentation**:
+- [Local Development Setup](./docs/local-setup.md) - Get started with local development
+- [GitHub Copilot Integration](./docs/github-copilot-guide.md) - Optimize your workflow with Copilot
+- [Testing Guide](./docs/testing-guide.md) - Comprehensive testing procedures
+- [Use Cases & Prompts](./docs/use-cases.md) - Practical examples and scenarios
+- [Architecture](./docs/architecture.md) - System design and patterns
+- [Enterprise Setup Guide](./docs/ENTERPRISE_SETUP.md) - Full enterprise configuration
+
+🔐 **Enterprise Features**:
+- Code of Conduct and Security Policies
+- Standardized commit guidelines
+- Environment configuration templates
+- GitHub Copilot optimization
+- Comprehensive testing framework
+- CI/CD integration
+
 ### Contributing
 
 If you're interested in contributing to OpenCode, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
