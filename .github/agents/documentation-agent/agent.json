@@ -1,0 +1,37 @@
+{
+  "name": "documentation-agent",
+  "version": "1.0.0",
+  "description": "Generate and maintain comprehensive documentation with consistency and quality",
+  "author": "OpenCode Team",
+  "mode": "subagent",
+  "model": {
+    "providerID": "github-copilot",
+    "modelID": "gpt-4"
+  },
+  "permissions": {
+    "*": "deny",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "edit": "ask",
+    "create": "ask",
+    "websearch": "allow"
+  },
+  "capabilities": [
+    "api-documentation",
+    "user-guides",
+    "code-comments",
+    "readme-generation",
+    "changelog-maintenance"
+  ],
+  "context": {
+    "window_size": 128000,
+    "memory_enabled": true,
+    "memory_ttl": 604800
+  },
+  "options": {
+    "temperature": 0.5,
+    "topP": 0.9,
+    "maxTokens": 8192
+  }
+}
