@@ -18,9 +18,8 @@ Create a `.env` file in the project root:
 # GitHub Copilot Token (required for AI features)
 GITHUB_COPILOT_TOKEN=your_token_here
 
-# Optional: Agent configuration
-OPENCODE_AGENTS_MEMORY_DIR=.opencode/agents/memory
-OPENCODE_AGENTS_LOG_LEVEL=info
+# Optional: Additional agent configuration
+# See the documentation for currently supported environment variables
 ```
 
 ### 3. Initialize the Agent System

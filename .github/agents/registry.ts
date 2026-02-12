@@ -1,7 +1,6 @@
 #!/usr/bin/env bun
 
 import path from "path"
-import { Agent } from "../../packages/opencode/src/agent/agent"
 
 export interface AgentConfig {
   name: string
@@ -100,6 +99,8 @@ export class AgentRegistry {
         description: config.description,
         mode: config.mode,
         model: config.model,
+        // TODO: Convert permissions to PermissionNext.Ruleset format
+        // OpenCode expects permission to be PermissionNext.fromConfig(config.permissions)
         permission: config.permissions,
         prompt: prompt || undefined,
         temperature: config.options.temperature,

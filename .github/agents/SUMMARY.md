@@ -216,8 +216,6 @@ bun run .github/agents/init.ts
 **Tests Include**:
 - Memory persistence tests
 - Agent registry tests
-- Context engine tests
-- Integration tests
 
 **Run Tests**:
 ```bash

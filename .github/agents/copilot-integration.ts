@@ -89,6 +89,8 @@ export class GitHubCopilotIntegration {
     })
     
     this.requestCount++
+    // TODO: Track token usage for streaming requests
+    // Consider using result.usage if available from the AI SDK
     
     for await (const chunk of result.textStream) {
       yield chunk
@@ -116,12 +118,14 @@ export class GitHubCopilotIntegration {
   }
   
   private createModel() {
-    // This is a placeholder - actual implementation depends on the AI SDK
-    // For GitHub Copilot, you'd use their specific model provider
-    return {
-      provider: "github-copilot",
-      model: this.config.model,
-    }
+    // TODO: Wire to OpenCode's existing Copilot provider implementation
+    // This should return a real AI SDK language model instance from @ai-sdk/github-copilot
+    // or the Provider layer, with credentials properly applied using this.config.apiKey
+    // For now, throwing to prevent runtime errors with placeholder model
+    throw new Error(
+      "GitHubCopilotIntegration.createModel() requires wiring to real AI SDK model. " +
+      "See packages/opencode/src/provider/ for Copilot provider implementation."
+    )
   }
   
   private async checkRateLimits(): Promise<void> {

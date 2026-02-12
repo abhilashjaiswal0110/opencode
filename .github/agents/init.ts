@@ -5,13 +5,11 @@
  * 
  * This script initializes the OpenCode agent system with:
  * - Memory persistence setup
- * - Context engine initialization  
  * - Agent registry loading
  * - GitHub Copilot integration
  */
 
 import { initializeMemoryStore, cleanupExpiredMemory } from "./memory"
-import { createContextEngine } from "./context-engine"
 import { createAgentRegistry } from "./registry"
 import { createCopilotFromEnv } from "./copilot-integration"
 import path from "path"

@@ -2,7 +2,6 @@
 
 import { getMemoryStore } from "./memory"
 import path from "path"
-import { glob } from "glob"
 
 export interface ContextData {
   project: ProjectContext
@@ -139,9 +138,8 @@ export class ContextEngine {
     
     for (const dir of dirs) {
       const dirPath = path.join(this.basePath, dir)
-      const dirFile = Bun.file(dirPath)
       
-      const proc = Bun.spawn(["find", dirPath, "-type", "d", "-maxdepth", "2"], {
+      const proc = Bun.spawn(["find", dirPath, "-maxdepth", "2", "-type", "d"], {
         cwd: this.basePath,
         stdout: "pipe",
         stderr: "pipe",
@@ -163,18 +161,36 @@ export class ContextEngine {
   private async loadFileContext(): Promise<FileContext[]> {
     const files: FileContext[] = []
     
-    // Get recently modified files
-    const proc = Bun.spawn(
-      ["git", "diff", "--name-only", "HEAD~10..HEAD"],
-      {
-        cwd: this.basePath,
-        stdout: "pipe",
-        stderr: "pipe",
+    // Get recently modified files, gracefully handle shallow clones
+    let recentFiles: string[] = []
+    try {
+      const proc = Bun.spawn(
+        ["git", "diff", "--name-only", "HEAD~10..HEAD"],
+        {
+          cwd: this.basePath,
+          stdout: "pipe",
+          stderr: "pipe",
+        }
+      )
+      
+      const output = await new Response(proc.stdout).text()
+      const exitCode = await proc.exited
+      
+      if (exitCode === 0 && output) {
+        recentFiles = output.split("\n").filter(Boolean).slice(0, 20)
+      } else {
+        // Fallback for shallow clones or repos with < 10 commits
+        const fallbackProc = Bun.spawn(
+          ["git", "diff", "--name-only", "HEAD~1..HEAD"],
+          { cwd: this.basePath, stdout: "pipe", stderr: "pipe" }
+        )
+        const fallbackOutput = await new Response(fallbackProc.stdout).text()
+        recentFiles = fallbackOutput.split("\n").filter(Boolean).slice(0, 20)
       }
-    )
-    
-    const output = await new Response(proc.stdout).text()
-    const recentFiles = output.split("\n").filter(Boolean).slice(0, 20)
+    } catch {
+      // Not a git repo or git not available, return empty files
+      return files
+    }
     
     for (const filePath of recentFiles) {
       const fullPath = path.join(this.basePath, filePath)

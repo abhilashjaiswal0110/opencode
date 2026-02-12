@@ -73,8 +73,8 @@ describe("AgentMemoryStore", () => {
       let result = await store.retrieve("test-agent", "expire-key")
       expect(result).toEqual({ value: "expire me" })
       
-      // Wait for expiration
-      await new Promise((resolve) => setTimeout(resolve, 1100))
+      // Wait for expiration with buffer for CI systems
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       
       // Should be null after expiration
       result = await store.retrieve("test-agent", "expire-key")

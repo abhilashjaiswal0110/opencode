@@ -74,7 +74,7 @@ This directory contains specialized AI agents for the OpenCode repository, built
 - Monitoring and alerting
 - Container orchestration
 
-**Usage**: `@devops <task>`
+**Usage**: `@devops-agent <task>`
 
 ## Architecture
 
@@ -91,9 +91,7 @@ Agents use SQLite for persistent memory:
 .opencode/
   agents/
     memory/
-      security-architect.db
-      code-reviewer.db
-      ...
+      agents.db
 ```
 
 ### GitHub Copilot Integration
@@ -123,9 +121,12 @@ Agents leverage GitHub Copilot credits through:
 ### Environment Variables
 ```bash
 GITHUB_COPILOT_TOKEN=<token>
-OPENCODE_AGENTS_MEMORY_DIR=.opencode/agents/memory
-OPENCODE_AGENTS_LOG_LEVEL=info
 ```
+
+### Runtime Configuration
+Agent configuration is managed in:
+- `.github/agents/config.json` - Agent system configuration
+- `.opencode/config.json` - Runtime configuration (auto-created)
 
 ## Best Practices
 
@@ -159,7 +160,7 @@ See [CUSTOM_AGENTS.md](./CUSTOM_AGENTS.md) for guide on creating custom agents.
 
 ### Testing Agents
 ```bash
-bun test packages/opencode/test/agents/
+bun test .github/agents/tests/
 ```
 
 ## Resources

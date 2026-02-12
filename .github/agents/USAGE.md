@@ -12,7 +12,6 @@ This guide shows you how to use the OpenCode agents in various scenarios.
 2. **Set Environment Variables**
    ```bash
    export GITHUB_COPILOT_TOKEN=your_token_here
-   export OPENCODE_AGENTS_MEMORY_DIR=.opencode/agents/memory
    ```
 
 3. **Initialize Agent System**
@@ -516,11 +515,12 @@ bun run .github/agents/init.ts
 
 If hitting GitHub Copilot rate limits:
 ```bash
-# Check current usage
-bun run .github/agents/check-usage.ts
-
-# Wait for rate limit reset
-# Or adjust rate limits in config.json
+# Check your current Copilot usage and limits in:
+#   - GitHub Settings → Copilot
+#   - Your organization's billing/usage dashboard
+#
+# Then either wait for the rate limit to reset
+# or adjust rate limits in .github/agents/config.json
 ```
 
 ## Resources

@@ -111,6 +111,7 @@ export class AgentMemoryStore {
           created_at: Date.now(),
           expires_at: expiresAt,
           metadata: metadata ? JSON.stringify(metadata) : null,
+          session_id: sessionId,
         })
         .where(eq(agentMemory.id, existing[0].id))
     } else {
