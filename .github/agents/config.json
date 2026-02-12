@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "enabled": true,
+  "github_copilot": {
+    "enabled": true,
+    "model": "gpt-4",
+    "rate_limit": {
+      "requests_per_minute": 60,
+      "tokens_per_minute": 150000
+    }
+  },
+  "memory": {
+    "enabled": true,
+    "storage_path": ".opencode/agents/memory",
+    "default_ttl": 604800,
+    "cleanup_interval": 3600
+  },
+  "context": {
+    "max_window_size": 128000,
+    "context_refresh_interval": 300
+  },
+  "agents": {
+    "security-architect": {
+      "enabled": true,
+      "priority": "high",
+      "auto_review": false
+    },
+    "code-reviewer": {
+      "enabled": true,
+      "priority": "high",
+      "auto_review": true
+    },
+    "documentation-agent": {
+      "enabled": true,
+      "priority": "medium",
+      "auto_generate": false
+    },
+    "testing-agent": {
+      "enabled": true,
+      "priority": "high",
+      "auto_generate_tests": false
+    },
+    "performance-agent": {
+      "enabled": true,
+      "priority": "medium",
+      "auto_analyze": false
+    },
+    "devops-agent": {
+      "enabled": true,
+      "priority": "medium",
+      "auto_deploy": false
+    }
+  },
+  "logging": {
+    "level": "info",
+    "log_path": ".opencode/agents/logs",
+    "max_log_size": "100MB",
+    "retention_days": 30
+  },
+  "security": {
+    "scan_on_commit": true,
+    "block_on_critical": true,
+    "allowed_tools": ["read", "grep", "glob", "codesearch", "websearch", "webfetch"],
+    "require_approval": ["edit", "create", "bash", "delete"]
+  }
+}

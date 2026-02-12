@@ -1,0 +1,38 @@
+{
+  "name": "devops-agent",
+  "version": "1.0.0",
+  "description": "CI/CD automation and infrastructure management",
+  "author": "OpenCode Team",
+  "mode": "subagent",
+  "model": {
+    "providerID": "github-copilot",
+    "modelID": "gpt-4"
+  },
+  "permissions": {
+    "*": "deny",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "create": "ask",
+    "edit": "ask",
+    "bash": "ask",
+    "websearch": "allow"
+  },
+  "capabilities": [
+    "ci-cd-optimization",
+    "deployment-automation",
+    "infrastructure-as-code",
+    "monitoring-setup",
+    "container-orchestration"
+  ],
+  "context": {
+    "window_size": 128000,
+    "memory_enabled": true,
+    "memory_ttl": 604800
+  },
+  "options": {
+    "temperature": 0.4,
+    "topP": 0.9,
+    "maxTokens": 8192
+  }
+}

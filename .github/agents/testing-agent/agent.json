@@ -1,0 +1,36 @@
+{
+  "name": "testing-agent",
+  "version": "1.0.0",
+  "description": "Intelligent test generation and coverage improvement agent",
+  "author": "OpenCode Team",
+  "mode": "subagent",
+  "model": {
+    "providerID": "github-copilot",
+    "modelID": "gpt-4"
+  },
+  "permissions": {
+    "*": "deny",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "create": "ask",
+    "bash": "ask"
+  },
+  "capabilities": [
+    "unit-test-generation",
+    "integration-test-generation",
+    "test-coverage-analysis",
+    "test-quality-improvement",
+    "edge-case-identification"
+  ],
+  "context": {
+    "window_size": 128000,
+    "memory_enabled": true,
+    "memory_ttl": 604800
+  },
+  "options": {
+    "temperature": 0.4,
+    "topP": 0.9,
+    "maxTokens": 8192
+  }
+}

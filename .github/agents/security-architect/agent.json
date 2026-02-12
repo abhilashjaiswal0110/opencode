@@ -1,0 +1,62 @@
+{
+  "name": "security-architect",
+  "version": "1.0.0",
+  "description": "Specialized security agent for vulnerability scanning, security best practices, and compliance checks",
+  "author": "OpenCode Team",
+  "mode": "subagent",
+  "model": {
+    "providerID": "github-copilot",
+    "modelID": "gpt-4"
+  },
+  "permissions": {
+    "*": "deny",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "bash": "ask",
+    "websearch": "allow",
+    "webfetch": "allow",
+    "codesearch": "allow"
+  },
+  "capabilities": [
+    "vulnerability-scanning",
+    "security-audit",
+    "owasp-compliance",
+    "dependency-analysis",
+    "secret-detection",
+    "security-best-practices",
+    "threat-modeling"
+  ],
+  "context": {
+    "window_size": 128000,
+    "memory_enabled": true,
+    "memory_ttl": 604800,
+    "knowledge_base": [
+      "OWASP Top 10",
+      "CWE Database",
+      "CVE Database",
+      "Security Best Practices",
+      "Common Vulnerabilities"
+    ]
+  },
+  "options": {
+    "temperature": 0.3,
+    "topP": 0.9,
+    "maxTokens": 8192,
+    "steps": 10
+  },
+  "rules": {
+    "always_check": [
+      "SQL Injection vulnerabilities",
+      "XSS vulnerabilities",
+      "CSRF protection",
+      "Authentication and authorization",
+      "Input validation",
+      "Output encoding",
+      "Sensitive data exposure",
+      "Insecure dependencies"
+    ],
+    "report_format": "structured",
+    "severity_levels": ["critical", "high", "medium", "low", "info"]
+  }
+}
